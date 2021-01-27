@@ -1,0 +1,61 @@
+from monome import Monome
+
+class Polynome:
+    def __init__(self, tete):
+        self.tete = tete # est de type Monome
+        
+    def getTete(self):
+        return self.tete
+    def setTete(self, t):
+        self.tete = t
+        return self
+    
+    def est_vide(self):
+        """
+        la valeur retourne n'est pas un polynome et pas un monome
+        ----------
+        none
+        """
+        return self.getTete() == None
+    
+    def localiser(self, m):
+        """
+        localiser où situer convenablement un monome de même degré que m dans le polynome courant.
+        Parameters
+        ----------
+        m : Monome
+            monome à situer dans le polynome appelant.
+        Returns
+        -------
+        Monome.
+        """
+        a=self.getTete()
+        while a.getSuivant() != None:
+            if a.getSuivant().getDeg()<=m.getDeg():
+                break
+            a=a.getSuivant()
+        return a
+    
+    def dernier(self):
+        """
+        retourne dernier monomone
+        ----------
+        none
+        """
+        p = self.getTete()
+        while p.getSuivant() != None:
+            p = p.getSuivant()
+        return p
+    
+    def ajouter(self, m):
+        """
+        inserer un nouveau monome convenablement dans le polynome courant.
+        Parameters
+        ----------
+        m : Monome
+            monome à inserer dans le polynome appelant.
+        """
+        b = self.getTete()
+        while b.getSuivant() != None:
+        return b   
+        
