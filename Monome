@@ -1,0 +1,154 @@
+
+
+class Monome:
+    def __init__(self, coef, deg, suivant=None):
+        # donnée :
+        self.coef = coef # de type float
+        self.deg = deg # de type int
+        # une reference vers le prochain monome (par défault None)
+        self.suivant = suivant # de type Monome
+    
+    
+        """
+        retourne le cofficient du monome
+        ----------
+        none
+        -------
+        Polynome.
+        """
+    def getCoef(self):
+        return self.coef
+    
+        """
+        retourne la valeur du cofficient du monome
+        ----------
+        val : valeur du cofficient
+        
+        -------
+        Polynome.
+        """
+    def setCoef(self, val):
+        self.coef = val
+        return self
+        """
+        retourne le degre du monome
+        ----------
+        none
+        
+        -------
+        Polynome.
+        """
+    
+    def getDeg(self):
+        return self.deg
+        """
+        retourne la valeur de degre du monome
+        ----------
+        val : valeur de degre
+        
+        -------
+        Polynome.
+        """
+    def setDeg(self, val):
+        self.deg = val
+        return self
+        """
+        retourne le monome suivant
+        ----------
+        none
+        
+        -------
+        Polynome.
+        """
+    
+    def getSuivant(self):
+        return self.suivant
+        """
+        retourne la valeur du monome suivant
+        ----------
+        m : valeur du monome
+        
+        -------
+        Polynome.
+        """
+    def setSuivant(self, m):
+        self.suivant = m
+        return self
+        """
+        afficher le polynome
+        ----------
+        none
+        
+        -------
+        Polynome.
+        """
+    
+    def __str__(self):
+        return str(self.getCoef()) + 'X^' + str(self.getDeg())
+        """
+        la realisation du multiplication d'un monome et l'autre qui le suit
+        ----------
+        m : le monome suivant
+        
+        -------
+        Polynome.
+        """
+    
+    def __mul__(self, m):
+        return Monome(self.getCoef() * m.getCoef(), self.getDeg()+m.getDeg())
+        """
+        la realisation de l'addition d'un monome et l'autre qui le suit
+        ----------
+        m : le monome suivant
+        
+        -------
+        Polynome.
+        """
+    def __add__(self, m):
+        assert self.getDeg() == m.getDeg()
+        return Monome(self.getCoef() + m.getCoef(), self.getDeg())
+        """
+        la realisation de la soustraction d'un monome et l'autre qui le suit.
+        ----------
+        m : le monome suivant
+        
+        -------
+        Polynome.
+        """
+    def __sub__(self, m):
+        assert Self.getDeg()==m.getDeg()
+        return Monome(self.getCoef() - m.getCoef(), self.getDeg())
+        """
+        la realisation du division d'un monome et l'autre qui le suit
+        ----------
+        m : le monome suivant
+        
+        -------
+        Polynome.
+        """
+    def __truediv__(self, m):
+        assert Self.getDeg()==m.getDeg()
+        return Monome(self.getCoef()/m.getCoef())* Monome(self.getDeg()-m.getDeg())
+        """
+        faire la deriver d'un polynome
+        ----------
+        m : le monome suivant
+        
+        -------
+        Polynome.
+        """
+    @staticmethod
+    def deriver(m):
+        return Monome(m.getCoef()*m.getDeg(),m.getDeg()-1)
+        """
+        faire la primitive d'un polynome
+        ----------
+        m : le monome suivant
+        
+        -------
+        Polynome.
+        """
+    @staticmethod
+    def primitive(m):
+        return Monome(m.getCoef()/m.getDeg(),m.getDeg()+1)
+    
